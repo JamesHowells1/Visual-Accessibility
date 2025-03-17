@@ -1,0 +1,20 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgba(153, 205, 50, 0.227);
+  padding: 40px;
+  color: #fff;
+}
+
+.click {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  font-size: 20px;
+  padding: 10px;
+  background-color: #ffffff4c;
+}
