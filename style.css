@@ -1,0 +1,348 @@
+:root {
+  /* body and title fonts */
+  --body: 'Hind', 'Inter', 'Helvetica Neue', 'Helvetica', sans-serif;
+  --title: 'Montserrat', 'Inter', 'Helvetica Neue', 'Helvetica', sans-serif;
+  
+  /* primary colours */
+  --true-white: #fff;
+  --off-white-a: #F2F4FB;
+  --off-black: #121A45;
+  --cody-blue: #7582CB;
+
+  /* secondary colours */
+  --off-blue-a: #E0E4F7;
+  --grey-c: #C4C6D5;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration-line: none;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgba(153, 205, 50, 0.227); /* placeholder overlay colour */
+}
+
+/*changes highlight colour*/
+::selection {
+  background: var(--cody-blue); /* WebKit/Blink Browsers */
+  color: var(--true-white);
+}
+
+::-moz-selection {
+  background: var(--cody-blue); /* Gecko Browsers */
+  color: var(--true-white);
+}
+
+/* set default font styling for text elements */
+h1, h2, h3, h4, h5, h6, p, li, a, input, label, textarea, select, option, button, address, small {
+  font-family: var(--body);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--off-black);
+}
+
+/* set default font styling for elements that should have the title font as default */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--title);
+}
+
+/* set line height */
+/* h1, h2, h3, h4, h5, h6, p, li, a, label, textarea, select, option, address, small {
+  line-height: 140%; /* optimal line height for this typeface */
+/* } */
+
+/* set font styling for individual heading levels and other text elements */
+
+h1 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+h5 {
+  font-size: 18px;
+}
+
+h6 {
+  font-size: 16px;
+}
+
+p strong {
+  font-weight: 500;
+}
+
+a {
+  font-weight: 500;
+}
+
+span {
+  font-family: inherit;
+  font-style: inherit;
+  color: inherit;
+  line-height: inherit;
+}
+
+small {
+  font-size: 14px;
+}
+
+/* remove default outline from buttons, input, etc. */
+
+input, select, textarea, a, button {
+  outline: none;
+}
+
+button:focus, a:focus, input:focus, button:active, a:active, input:active {
+  outline: none;
+}
+
+/* ... instead, add a custom outline on "focus-visible" state only (this applies only when the user uses the 'tab' button to navigate) */
+a:focus-visible, button:focus-visible {
+  outline: auto;
+  outline-color: var(--cody-blue);
+  outline-style: double;
+  outline-width: 6px;
+}
+
+/* remove any text-decoration from anchor links. Important tag is used as in the past, older browsers have ignored the rule. */
+
+a {
+  text-decoration: none !important;
+}
+
+a:-webkit-any-link {
+  text-decoration: none !important;
+}
+
+a:-moz-any-link {
+  text-decoration: none !important;
+}
+
+a:link, a:active, a:any-link, a:visited, a:focus, a:hover, a:active {
+  text-decoration: none !important;
+}
+
+/* remove default styling from buttons (and add custom styling) */
+
+button {
+  color: unset;
+  background-color: unset;
+  /* font: unset; */
+  border: none;
+  box-sizing: inherit;
+  align-items: unset;
+
+  font-family: var(--body);
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:active {
+  border: none;
+}
+
+/* remove default styling from inputs (and add custom styling) */
+
+input {
+  border: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  padding: 15px 20px;
+  background-color: transparent;
+  color: var(--off-black);
+  font-family: var(--body);
+}
+
+input::placeholder {
+  color: var(--grey-c);
+  font-size: 16px;
+  font-family: var(--body);
+  font-weight: 400;
+}
+
+input::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+input::-webkit-search-cancel-button{
+  -webkit-appearance: none;
+}
+
+
+
+/* ================ */
+/* GENERAL / SHARED / GLOBAL ELEMENTS   
+/* ================ */
+
+/* !TEMP - until boxicons are sorted */
+.icon {
+  width: 18px;
+  height: 18px;
+  background-color: grey;
+  position: relative;
+}
+
+/* !TEMP -until boxicons are sorted */
+.icon::after {
+  content: 'i';
+  position: absolute;
+  top: 0;
+  left: 5px;
+  font-weight: 600;
+  color: var(--true-white);
+}
+
+/* default class to hide something */
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* standard button design */
+
+.standard-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--grey-c);
+  width: 100%;
+  transition: border-color;
+}
+
+.standard-button:hover, .standard-button:active {
+  border-color: grey; /* !TEMP */
+}
+
+/* view UI button */
+
+.view-ui-button-wrap {
+  border-radius: 10px;
+  background-color: var(--off-white-a);
+  padding: 5px;
+  display: flex;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.view-ui-button {
+  border-radius: 10px;
+  width: 35px;
+  height: 35px;
+}
+
+.view-ui-button .icon {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+
+
+/* ================ */
+/* MAIN MENU (other screens derive from this class) */
+/* ================ */
+
+.menu {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  padding: 25px;
+  background-color: var(--off-white-a);
+  border-radius: 10px;
+  color: var(--off-black);
+  width: 220px;
+}
+
+.menu .icon {
+  margin-left: 10px;
+}
+
+.menu .menu-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.menu .menu-heading .buttons-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.menu .menu-heading .buttons-wrap :first-child {
+  margin-right: 5px;
+}
+
+.menu .menu-heading .main-title {
+  font-size: 18px;
+}
+
+.menu .saved-slots .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu .saved-slots .top .title {
+  font-size: 16px;
+}
+
+.menu .saved-slots-list-wrap .saved-slots-list {
+  margin-top: 10px;
+  max-height: 112px;
+  overflow-y: scroll;
+}
+
+.menu .saved-slots-list-wrap .list-item .number {
+  margin-right: 5px;
+}
+
+.menu .saved-slots-list-wrap .add-button {
+  padding: 10px 5px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+
+/* ================ */
+/* SETTINGS */
+/* ================ */
+
+.settings .menu-heading {
+  margin-bottom: 10px;
+}
+
+.settings .menu-heading .main-title {
+  text-align: center;
+  width: 100%;
+}
+
+.menu .icon {
+  margin-left: 0;
+}
+
+.settings .standard-button:not(:last-child) {
+  margin-bottom: 8px;
+}

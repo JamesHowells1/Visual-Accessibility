@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="boxicons.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- <p class="click interactive" onmousedown="enableWindowDrag()" onmouseup="disableWindowDrag()" onmouseleave="disableWindowDrag()">CLICK AND HOLD<br>HERE TO DRAG</p> -->
+    <div class="view-ui-button-wrap interactive">
+      <button type="button" class="view-ui-button">
+        <box-icon name='dots-horizontal-rounded' class="icon"></box-icon>
+      </button>
+    </div>
+    
+    <div class="menu interactive hidden">
+      <div class="menu-heading">
+        <h1 class="main-title">Cody</h1>
+        <div class="buttons-wrap">
+          <button type="button" class="settings-button">
+            <box-icon name='cog' class="icon"></box-icon> 
+          </button>
+          <button type="button" class="close-button">
+            <box-icon name='x' class="icon"></box-icon> 
+          </button>
+        </div>
+      </div>
+      <div class="saved-slots">
+        <div class="top">
+          <h2 class="title">Saved Slots</h2>
+          <button type="button" class="edit-button">
+            <box-icon name='edit' class="icon"></box-icon> 
+          </button>
+        </div>
+        <div class="saved-slots-list-wrap">
+          <div class="saved-slots-list">
+            <div class="list-item">
+              <p class="text"><span class="number">1</span><span class="name">Slot name</span></p>
+            </div>
+            <div class="list-item">
+              <p class="text"><span class="number">2</span><span class="name">Slot name</span></p>
+            </div>
+            <div class="list-item">
+              <p class="text"><span class="number">3</span><span class="name">Slot name</span></p>
+            </div>
+            <div class="list-item">
+              <p class="text"><span class="number">4</span><span class="name">Slot name</span></p>
+            </div>
+            <div class="list-item">
+              <p class="text"><span class="number">5</span><span class="name">Slot name</span></p>
+            </div>
+            <div class="list-item">
+              <p class="text"><span class="number">6</span><span class="name">Slot name</span></p>
+            </div>
+            <button type="button" class="add-button standard-button">Add New Preset <box-icon name='plus' class="icon"></box-icon></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="settings menu interactive hidden">
+      <div class="menu-heading">
+        <button type="button" class="back-button">
+          <box-icon name='left-arrow-alt' class="icon"></box-icon>
+        </button>
+        <h1 class="main-title">Options & Settings</h1>
+      </div>
+      <div>
+        <button type="button" class="standard-button">App Colours</button>
+        <button type="button" class="standard-button">App Information</button>
+        <button type="button" class="standard-button">Donate</button>
+        <button type="button" class="standard-button">Feedback</button>
+      </div>
+    </div>
+
+    <div class="edit-view menu interactive hidden">
+      <div class="menu-heading">
+        <button type="button" class="back-button">
+          <box-icon name='left-arrow-alt' class="icon"></box-icon>
+        </button>
+      </div>
+      <div>
+
+      </div>
+    </div>
+  </body>
+</html>
