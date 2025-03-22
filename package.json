@@ -11,5 +11,8 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "electron": "^35.0.1"
+  },
+  "dependencies": {
+    "boxicons": "^2.1.4"
   }
 }

@@ -33,9 +33,53 @@ window.addEventListener('DOMContentLoaded', () => {
       });
   });
 
+
+
+  // set button event listeners
+
+  const homeScreen = document.querySelector(".menu");
+  const settingsScreen = document.querySelector(".settings");
+  const editScreen = document.querySelector(".edit-view");
+  const viewUIButton = document.querySelector(".view-ui-button");
+
+  document.querySelector(".settings-button").addEventListener('click', () => {
+    homeScreen.classList.add("hidden");
+    settingsScreen.classList.remove("hidden");
+  });
+
+  document.querySelector(".settings .back-button").addEventListener('click', () => {
+    homeScreen.classList.remove("hidden");
+    settingsScreen.classList.add("hidden");
+  });
+
+  viewUIButton.addEventListener('click', () => {
+    homeScreen.classList.remove("hidden");
+    viewUIButton.classList.add("hidden");
+  });
+
+  document.querySelector(".edit-button").addEventListener('click', () => {
+    homeScreen.classList.add("hidden");
+    editScreen.classList.remove("hidden");
+  });
+
+  document.querySelector(".saved-slots-list-wrap .add-button").addEventListener('click', () => {
+    homeScreen.classList.add("hidden");
+    editScreen.classList.remove("hidden");
+  });
+
+  document.querySelector(".edit-view .back-button").addEventListener('click', () => {
+    homeScreen.classList.remove("hidden");
+    editScreen.classList.add("hidden");
+  });
+
+  document.querySelector(".close-button").addEventListener('click', () => {
+    homeScreen.classList.add("hidden");
+    viewUIButton.classList.remove("hidden");
+  });
+
   //ipcRenderer.send('set-ignore-mouse-events', true, { forward: true });
 
-  document.querySelector(".click").addEventListener('click', () => {
-    ipcRenderer.send('enable-disable-frame');
-  });
+  // document.querySelector(".click").addEventListener('click', () => {
+  //   ipcRenderer.send('enable-disable-frame');
+  // });
 })
