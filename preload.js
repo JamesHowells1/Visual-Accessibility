@@ -12,11 +12,16 @@ window.addEventListener('DOMContentLoaded', () => {
   //   replaceText(`${dependency}-version`, process.versions[dependency])
   // }
 
+  // necessary to ignore mouse events initially
+  setTimeout(() => {
+    ipcRenderer.send('set-ignore-mouse-events', true, { forward: true });
+  }, 500);
+
   const interactiveElements = document.querySelectorAll('.interactive');
 
   interactiveElements.forEach((element) => {
-    console.log("doing");
-    ipcRenderer.send('lg', "doing");
+    console.log("adding EventListener");
+    ipcRenderer.send('lg', "adding EventListener");
       element.addEventListener('mouseenter', () => {
           isMouseOverInteractiveElement = true;
           ipcRenderer.send('set-ignore-mouse-events', false);
@@ -24,8 +29,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
       element.addEventListener('mouseleave', () => {
           isMouseOverInteractiveElement = false;
-          console.log("being sent");
-          ipcRenderer.send('lg', "being sent");
           ipcRenderer.send('set-ignore-mouse-events', true, { forward: true });
       });
   });
