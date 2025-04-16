@@ -1,18 +1,32 @@
 {
-  "name": "my-electron-app",
+  "name": "Cody",
   "version": "1.0.0",
   "description": "Hello World",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "dist": "electron-builder"
   },
-  "author": "John Smith",
+  "author": "",
   "license": "UNLICENSED",
   "devDependencies": {
-    "electron": "^35.0.1"
+    "electron": "^35.0.1",
+    "electron-builder": "^26.0.12"
   },
   "dependencies": {
     "boxicons": "^2.1.4"
+  },
+  "build": {
+    "appId": "com.cody",
+    "mac": {
+      "icon": "build/icon.icns"
+    },
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        "zip"
+      ]
+    }
   }
 }

@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron')
+const { app, BrowserWindow, ipcMain, desktopCapturer} = require('electron')
 const path = require('node:path')
 const { screen } = require('electron/main')
 
@@ -15,7 +15,9 @@ const createWindow = () => {
     width: widthFull,
     height: heightFull,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
+      contextIsolation: true,
+      nodeIntegration: false
     },
     transparent: true,
     frame: false,
@@ -26,6 +28,11 @@ const createWindow = () => {
 
   // ignore mouse events
   // win.setIgnoreMouseEvents(true)
+
+  // Handle IPC for always-on-top
+  ipcMain.on('set-always-on-top', (event, flag) => {
+    win.setAlwaysOnTop(flag, 'screen-saver', 1);
+  });
 
   // log to node console
   ipcMain.on('lg', (event, message) => {
@@ -40,6 +47,15 @@ const createWindow = () => {
     const newWin = BrowserWindow.fromWebContents(event.sender)
     newWin.setIgnoreMouseEvents(ignore, options)
   })
+
+  // handle close app button press
+  ipcMain.on('quit-app', (event) => {
+    if (process.platform !== 'darwin') {
+      app.quit();
+    } else {
+      win.destroy(); 
+    }
+  });
 
   // enable/disable frame 
   // ipcMain.on('enable-disable-frame', (event) => {
@@ -97,8 +113,8 @@ const createWindow = () => {
   // })
 
   // keep browser window on top
-  win.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
-  win.setAlwaysOnTop(true, 'screen-saver', 1);
+  win.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true }); // side effect: this will prevent the app from having an app icon in the macos dock and will prevent it having a menu in the menu bar
+  win.setAlwaysOnTop(true, 'screen-saver', 1); // required 
 
   // load the html onto the browser window 
   win.loadFile('index.html')
@@ -126,3 +142,8 @@ app.whenReady().then(() => {
   });
 })
 
+// get id of available screen source. used for getting video stream of screen 
+ipcMain.handle('get-screen-source', async () => {
+  const sources = await desktopCapturer.getSources({ types: ['screen'] });
+  return sources[0].id;
+});

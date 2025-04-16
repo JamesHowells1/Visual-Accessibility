@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
-    <title>Hello World!</title>
+    <title>Cody</title>
     <link rel="stylesheet" href="./style.css">
     <script src="boxicons.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,10 +12,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   </head>
   <body>
+    <div id="magnifier" class="hidden"><canvas id="lens" width="250" height="250"></canvas></div>
+
     <!-- <p class="click interactive" onmousedown="enableWindowDrag()" onmouseup="disableWindowDrag()" onmouseleave="disableWindowDrag()">CLICK AND HOLD<br>HERE TO DRAG</p> -->
     <div class="view-ui-button-wrap interactive">
       <button type="button" class="view-ui-button">
-        <box-icon name='dots-horizontal-rounded' class="icon"></box-icon>
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></svg>
+      </button>
+      <button type="button" class="close-app-button">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path></svg>      
       </button>
     </div>
     
@@ -24,50 +29,39 @@
         <h1 class="main-title">Cody</h1>
         <div class="buttons-wrap">
           <button type="button" class="settings-button">
-            <box-icon name='cog' class="icon"></box-icon> 
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12 16c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.084 0 2 .916 2 2s-.916 2-2 2-2-.916-2-2 .916-2 2-2z"></path><path d="m2.845 16.136 1 1.73c.531.917 1.809 1.261 2.73.73l.529-.306A8.1 8.1 0 0 0 9 19.402V20c0 1.103.897 2 2 2h2c1.103 0 2-.897 2-2v-.598a8.132 8.132 0 0 0 1.896-1.111l.529.306c.923.53 2.198.188 2.731-.731l.999-1.729a2.001 2.001 0 0 0-.731-2.732l-.505-.292a7.718 7.718 0 0 0 0-2.224l.505-.292a2.002 2.002 0 0 0 .731-2.732l-.999-1.729c-.531-.92-1.808-1.265-2.731-.732l-.529.306A8.1 8.1 0 0 0 15 4.598V4c0-1.103-.897-2-2-2h-2c-1.103 0-2 .897-2 2v.598a8.132 8.132 0 0 0-1.896 1.111l-.529-.306c-.924-.531-2.2-.187-2.731.732l-.999 1.729a2.001 2.001 0 0 0 .731 2.732l.505.292a7.683 7.683 0 0 0 0 2.223l-.505.292a2.003 2.003 0 0 0-.731 2.733zm3.326-2.758A5.703 5.703 0 0 1 6 12c0-.462.058-.926.17-1.378a.999.999 0 0 0-.47-1.108l-1.123-.65.998-1.729 1.145.662a.997.997 0 0 0 1.188-.142 6.071 6.071 0 0 1 2.384-1.399A1 1 0 0 0 11 5.3V4h2v1.3a1 1 0 0 0 .708.956 6.083 6.083 0 0 1 2.384 1.399.999.999 0 0 0 1.188.142l1.144-.661 1 1.729-1.124.649a1 1 0 0 0-.47 1.108c.112.452.17.916.17 1.378 0 .461-.058.925-.171 1.378a1 1 0 0 0 .471 1.108l1.123.649-.998 1.729-1.145-.661a.996.996 0 0 0-1.188.142 6.071 6.071 0 0 1-2.384 1.399A1 1 0 0 0 13 18.7l.002 1.3H11v-1.3a1 1 0 0 0-.708-.956 6.083 6.083 0 0 1-2.384-1.399.992.992 0 0 0-1.188-.141l-1.144.662-1-1.729 1.124-.651a1 1 0 0 0 .471-1.108z"></path></svg>
           </button>
           <button type="button" class="close-button">
-            <box-icon name='x' class="icon"></box-icon> 
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path></svg>
           </button>
         </div>
       </div>
       <div class="saved-slots">
         <div class="top">
           <h2 class="title">Saved Slots</h2>
-          <button type="button" class="edit-button">
-            <box-icon name='edit' class="icon"></box-icon> 
+          <button type="button">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg>         
           </button>
         </div>
         <div class="saved-slots-list-wrap">
           <div class="saved-slots-list">
-            <div class="list-item">
-              <p class="text"><span class="number">1</span><span class="name">Slot name</span></p>
-            </div>
-            <div class="list-item">
-              <p class="text"><span class="number">2</span><span class="name">Slot name</span></p>
-            </div>
-            <div class="list-item">
-              <p class="text"><span class="number">3</span><span class="name">Slot name</span></p>
-            </div>
-            <div class="list-item">
-              <p class="text"><span class="number">4</span><span class="name">Slot name</span></p>
-            </div>
-            <div class="list-item">
-              <p class="text"><span class="number">5</span><span class="name">Slot name</span></p>
-            </div>
-            <div class="list-item">
-              <p class="text"><span class="number">6</span><span class="name">Slot name</span></p>
-            </div>
+            <!-- saved slots are added programmatically - see js below -->
             <button type="button" class="add-button standard-button">Add New Preset <box-icon name='plus' class="icon"></box-icon></button>
           </div>
         </div>
+      </div>
+      <div class="magnify-wrap">
+        <button type="button" class="standard-button align-center-button magnify-text-button">
+          <span>Magnify Text</span>
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path></svg>
+        </button>
       </div>
     </div>
 
     <div class="settings menu interactive hidden">
       <div class="menu-heading">
         <button type="button" class="back-button">
-          <box-icon name='left-arrow-alt' class="icon"></box-icon>
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M21 11H6.414l5.293-5.293-1.414-1.414L2.586 12l7.707 7.707 1.414-1.414L6.414 13H21z"></path></svg>
         </button>
         <h1 class="main-title">Options & Settings</h1>
       </div>
@@ -81,13 +75,328 @@
 
     <div class="edit-view menu interactive hidden">
       <div class="menu-heading">
-        <button type="button" class="back-button">
-          <box-icon name='left-arrow-alt' class="icon"></box-icon>
+        <button type="button" class="back-button" onclick="cancelSlotEdit()">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M21 11H6.414l5.293-5.293-1.414-1.414L2.586 12l7.707 7.707 1.414-1.414L6.414 13H21z"></path></svg>
         </button>
+        <h2 class="title">Edit [slot name]</h2>
       </div>
-      <div>
-
+      <div class="main-content">
+        <div class="top">
+          <div class="colour-picker">
+            <label class="colour-picker-label" for="picker">Select a Custom Colour</label>
+            <p class="grey-text colour-picker-below-label">Click the box below to open the<br>colour picker.</p>
+            <div class="picker-wrap">
+              <input type="color" id="picker" name="picker" value="#99cd32" />
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M13.4 2.096a10.08 10.08 0 0 0-8.937 3.331A10.054 10.054 0 0 0 2.096 13.4c.53 3.894 3.458 7.207 7.285 8.246a9.982 9.982 0 0 0 2.618.354l.142-.001a3.001 3.001 0 0 0 2.516-1.426 2.989 2.989 0 0 0 .153-2.879l-.199-.416a1.919 1.919 0 0 1 .094-1.912 2.004 2.004 0 0 1 2.576-.755l.412.197c.412.198.85.299 1.301.299A3.022 3.022 0 0 0 22 12.14a9.935 9.935 0 0 0-.353-2.76c-1.04-3.826-4.353-6.754-8.247-7.284zm5.158 10.909-.412-.197c-1.828-.878-4.07-.198-5.135 1.494-.738 1.176-.813 2.576-.204 3.842l.199.416a.983.983 0 0 1-.051.961.992.992 0 0 1-.844.479h-.112a8.061 8.061 0 0 1-2.095-.283c-3.063-.831-5.403-3.479-5.826-6.586-.321-2.355.352-4.623 1.893-6.389a8.002 8.002 0 0 1 7.16-2.664c3.107.423 5.755 2.764 6.586 5.826.198.73.293 1.474.282 2.207-.012.807-.845 1.183-1.441.894z"></path><circle cx="7.5" cy="14.5" r="1.5"></circle><circle cx="7.5" cy="10.5" r="1.5"></circle><circle cx="10.5" cy="7.5" r="1.5"></circle><circle cx="14.5" cy="7.5" r="1.5"></circle></svg>            
+            </div>
+            <div class="opacity-wrap">
+              <label for="opacity" class="grey-text opacity-label">Opacity: 0.23</label>
+              <input
+              type="range"
+              id="opacity"
+              name="opacity"
+              min="0.01"
+              max="0.8"
+              value="0.23"
+              step="0.01" />
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+          <div class="presets-list">
+            <div class="top">
+              <p class="presets-list-title">...Or Select a Preset</p>
+            </div>
+            <div class="sub-parts">
+              <div class="filter">
+                <p class="grey-text">Filter presets for:</p>
+                <select name="preset-filter" id="preset-filter">
+                  <option selected="selected" value="filter">No filter</option>
+                  <option value="colour">Colour blindness</option>
+                  <option value="dyslexia">Dyslexia</option>
+                </select>
+              </div>
+              <div class="presets">
+                <p class="grey-text">Presets:</p>
+                <select name="presets-list" id="presets-list">
+                  <option selected="selected" value="select preset">Select preset</option>
+                  <option value="a" class="dyslexia">Preset 1</option>
+                  <option value="b" class="colour">Preset 2</option>
+                  <option value="a" class="dyslexia">Preset 3</option>
+                  <option value="b" class="dyslexia colour">Preset 4</option>
+                  <option value="a" class="colour">Preset 5</option>
+                  <option value="b" class="dyslexia colour">Preset 6</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="options">
+          <div class="row-1 row">
+            <button type="button" class="standard-button save-button">Save Slot 1</button>
+          </div>
+          <div class="row-2 row">
+            <button type="button" class="standard-button preview-button" onclick="showHidePreviewWrap()">Preview</button>
+            <button type="button" class="standard-button cancel-button" onclick="cancelSlotEdit()">Cancel</button>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div class="preview-wrap hidden">
+      <img src="media/sample-img-0.jpg" alt="" class="image" width="1920" height="1273">
+      <div class="preview-overlay"></div>
+    </div>
+
+    <script>
+      // ===========
+      // global vars
+      // ===========
+
+      let currentOverlayOpacityValue = 0.23; // opacity for current overlay
+      let currentOverlayColour = "#99cd32"; // colour of current overlay
+      // slots, including initial sample slots. Add slots to this array for them to be added to the main menu programmatically. 
+      let slots = [
+        {
+          name: "Sample slot A",
+          colour: "#99cd32",
+          opacity: 0.23
+        },
+        {
+          name: "Sample slot B",
+          colour: "#FFFFEE",
+          opacity: 0.15
+        }
+      ]
+
+
+
+      // ============
+      // FOR THE EDIT SCREEN
+      // ============
+
+      // on page load
+      document.addEventListener('DOMContentLoaded', () => {
+
+        // allow colour picker to remain on top of the window when it's enabled
+        const colourPicker = document.querySelector("#picker");
+        const opacityInput = document.querySelector("#opacity");
+
+        // on focus, set the window to not be always on top
+        colourPicker.addEventListener('focus', () => {
+          window.electronAPI.setAlwaysOnTop(false);
+        });
+
+        // when focus is lost, set window to be always on top again 
+        colourPicker.addEventListener('blur', () => {
+          window.electronAPI.setAlwaysOnTop(true);
+        });
+
+        // change preview overlay when color or opacity changes
+        colourPicker.addEventListener('input', () => {
+          document.querySelector(".preview-wrap .preview-overlay").style.backgroundColor = colourPicker.value;
+        });
+
+        opacityInput.addEventListener('input', () => {
+          document.querySelector(".preview-wrap .preview-overlay").style.opacity = opacityInput.value;
+        });
+
+
+        // todo: save/get slots from local storage 
+
+
+        // add slots to ui
+        for (let i = slots.length - 1; i >= 0; i--) {
+          const slot = slots[i];
+          const listItem = document.createElement("div");
+          listItem.classList.add("list-item");
+          listItem.innerHTML = `
+          <p class="text"><span class="number">${i + 1}</span><span class="name">${slot.name}</span></p>
+          <button type="button" class="edit-button" onclick="editSlot(${i})">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path><path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path></svg>
+          </button>
+          `;
+          document.querySelector(".saved-slots-list").prepend(listItem);
+        }
+      });
+
+      // show the edit screen to edit a slot
+      const homeScreen = document.querySelector(".menu");
+      const editScreen = document.querySelector(".edit-view");
+      function editSlot(slotIndex) {
+        if (slots[slotIndex] == undefined) return;
+        const slot = slots[slotIndex];
+        // set ui with slot data
+        homeScreen.classList.add("hidden");
+        editScreen.classList.remove("hidden");
+        document.querySelector(".edit-view .menu-heading .title").textContent = "Edit: " + slot.name;
+        document.querySelector("#picker").value = slot.colour;
+        document.querySelector("#opacity").value = slot.opacity;
+        document.querySelector(".edit-view .opacity-label").textContent = "Opacity: " + slot.opacity;
+        document.querySelector(".edit-view .options .save-button").textContent = "Save to Slot " + (slotIndex + 1);
+        document.querySelector(".edit-view .options .save-button").setAttribute("onclick", `saveSlot(${slotIndex})`);
+        document.querySelector(".preview-wrap .preview-overlay").style.backgroundColor = slot.colour; // preview overlay
+        document.querySelector(".preview-wrap .preview-overlay").style.opacity = slot.opacity;
+      }
+
+      // cancel slot edit
+      function cancelSlotEdit() {
+        homeScreen.classList.remove("hidden");
+        editScreen.classList.add("hidden");
+        if (previewOpen) showHidePreviewWrap(); // close preview if open
+      }
+
+      // when the user clicks "Save Slot X"
+      function saveSlot(slotIndex) {
+        if (slots[slotIndex] == undefined) return;
+        const slot = slots[slotIndex];
+        // save new values to slot obj
+        slot.colour = document.querySelector("#picker").value;
+        slot.opacity = document.querySelector("#opacity").value;
+
+        // TODO: save slots to local storage
+
+        // go back to main menu
+        cancelSlotEdit();
+      }
+
+      // the function below uses a streamed video feed of the desktop to create a magnification feature. It was adapted from code obtained from ChatGPT
+      async function activateMagnifier() {
+        // get screen source id
+        const bridge = window.magnifierBridge; 
+        if (!bridge) {
+          console.error('magnifierBridge not found');
+          return;
+        }
+        const sourceId = await bridge.getScreenSource();
+
+        // capture desktop video stream 
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: {
+            mandatory: {
+              chromeMediaSource: 'desktop',
+              chromeMediaSourceId: sourceId
+            }
+          }
+        });
+
+        // create and play video element (but don't actually add to the dom)
+        const video = document.createElement('video');
+        video.srcObject = stream;
+        video.play();
+
+        // create canvas
+        const canvas = document.getElementById('lens');
+        const ctx = canvas.getContext('2d');
+
+        // set zoom level
+        const zoom = 2.5;
+
+        video.addEventListener('loadedmetadata', () => {
+          document.addEventListener('mousemove', e => { // for every mouse move event...
+            const magnifier = document.getElementById('magnifier');
+            const size = 250;
+            const half = size / 2;
+
+            // position magnifier next to cursor
+            magnifier.style.left = `${e.clientX - half + 125}px`;
+            magnifier.style.top = `${e.clientY - half + 125}px`;
+
+            const scaleX = video.videoWidth / window.innerWidth;
+            const scaleY = video.videoHeight / window.innerHeight;
+
+            const sx = (e.clientX - half / zoom) * scaleX;
+            const sy = (e.clientY - half / zoom) * scaleY;
+
+            ctx.clearRect(0, 0, size, size); // clear canvas before drawing 
+
+            // draw the magnified area
+            ctx.drawImage(video, sx, sy, size / zoom, size / zoom, 0, 0, size, size);
+          });
+        });
+      };
+
+      // set event listeners to enable magnifier on button click
+      let magnifyEnabled = false; // is the magnifier currently enabled?
+      let magnifierActivated = false; // has the magnifier ever been activated?
+      const magnifyTextButton = document.querySelector(".magnify-text-button");
+      const magnifyElement = document.querySelector("#magnifier");
+
+      magnifyTextButton.addEventListener("click", ()=>{
+        if (magnifyEnabled) {
+          // magnifier enabled...disable magnifier...
+          magnifyElement.classList.add("hidden");
+          magnifyEnabled = false;
+          magnifyTextButton.classList.remove("active");
+        } else {
+          // magnifier disabled... activate magnifier...
+          if (!magnifierActivated) {
+            // magnifier never activated before...try to activate magnifier...
+            try {
+              activateMagnifier();
+              magnifyElement.classList.remove("hidden");
+              magnifyEnabled = true;
+              magnifierActivated = true;
+              magnifyTextButton.classList.add("active");
+            } catch (err) {
+              console.log(err);
+            }
+          } else {
+            // magnifier activated before... enable magnifier
+            magnifyElement.classList.remove("hidden");
+            magnifyEnabled = true;
+            magnifyTextButton.classList.add("active");
+          }
+        }
+      })
+
+      // set event listener for the preset filter - filters the list depending on the filter selected
+      const presetFilterList = document.querySelector("#preset-filter");
+      const presetsList = document.querySelector("#presets-list");
+      presetFilterList.addEventListener("change", ()=>{
+        const currentFilter = presetFilterList.value; // get current filter
+
+        // filter presets
+        presetsList.querySelectorAll("option").forEach((listItem)=>{
+          if (currentFilter == "filter") {
+            listItem.style.display = ""; // reset all options if filter is unset
+          } else {
+            // filter options 
+            if (!listItem.classList.contains(currentFilter)) {
+              listItem.style.display = "none";
+            } else {
+              listItem.style.display = "";
+            }
+          }
+
+        })
+      })
+
+      // show / hide preview wrap
+      let previewOpen = false;
+      function showHidePreviewWrap() {
+        const previewButton = document.querySelector(".preview-button");
+        const previewWrap = document.querySelector(".preview-wrap");
+        if (previewOpen) {
+          // preview open... close preview
+          previewButton.textContent = "Preview";
+          previewWrap.classList.add("hidden");
+          previewOpen = false;
+        } else {
+          // preview closes... open preview
+          previewButton.textContent = "Close Preview";
+          previewWrap.classList.remove("hidden");
+          previewOpen = true;
+        }
+      }
+
+      // opacity selector
+      const opacityInput = document.querySelector(".opacity-wrap input");
+      const opacityLabel = document.querySelector(".opacity-label");
+      opacityInput.addEventListener("input", ()=>{
+        currentOverlayOpacityValue = opacityInput.value; // update global var with new value
+        opacityLabel.textContent = "Opacity: " + opacityInput.value; // update DOM label
+      })
+    </script>
   </body>
 </html>

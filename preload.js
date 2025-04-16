@@ -1,6 +1,16 @@
-const { ipcRenderer } = require('electron')
+const { ipcRenderer, contextBridge } = require('electron')
 
 let isMouseOverInteractiveElement = false;
+
+// bridge between renderer and main - for the colour picker functionality
+contextBridge.exposeInMainWorld('electronAPI', {
+  setAlwaysOnTop: (flag) => ipcRenderer.send('set-always-on-top', flag)
+});
+
+// bridge between renderer and main - for the magnify text functionality 
+contextBridge.exposeInMainWorld('magnifierBridge', {
+  getScreenSource: () => ipcRenderer.invoke('get-screen-source')
+});
 
 window.addEventListener('DOMContentLoaded', () => {
   // const replaceText = (selector, text) => {
@@ -57,24 +67,28 @@ window.addEventListener('DOMContentLoaded', () => {
     viewUIButton.classList.add("hidden");
   });
 
-  document.querySelector(".edit-button").addEventListener('click', () => {
-    homeScreen.classList.add("hidden");
-    editScreen.classList.remove("hidden");
-  });
+  // document.querySelector(".edit-button").addEventListener('click', () => {
+  //   homeScreen.classList.add("hidden");
+  //   editScreen.classList.remove("hidden");
+  // });
 
   document.querySelector(".saved-slots-list-wrap .add-button").addEventListener('click', () => {
     homeScreen.classList.add("hidden");
     editScreen.classList.remove("hidden");
   });
 
-  document.querySelector(".edit-view .back-button").addEventListener('click', () => {
-    homeScreen.classList.remove("hidden");
-    editScreen.classList.add("hidden");
-  });
+  // document.querySelector(".edit-view .back-button").addEventListener('click', () => {
+  //   homeScreen.classList.remove("hidden");
+  //   editScreen.classList.add("hidden");
+  // });
 
   document.querySelector(".close-button").addEventListener('click', () => {
     homeScreen.classList.add("hidden");
     viewUIButton.classList.remove("hidden");
+  });
+
+  document.querySelector(".close-app-button").addEventListener('click', () => {
+    ipcRenderer.send('quit-app'); // quit app 
   });
 
   //ipcRenderer.send('set-ignore-mouse-events', true, { forward: true });
