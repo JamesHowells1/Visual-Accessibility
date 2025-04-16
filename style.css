@@ -544,6 +544,10 @@ input::-webkit-search-cancel-button{
   width: 100%;
 }
 
+.edit-view .presets-list select, .edit-view .presets-list option {
+  color: var(--off-black);
+}
+
 .edit-view .presets-list .top {
   display: flex;
   align-items: center;

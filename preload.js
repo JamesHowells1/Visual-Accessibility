@@ -72,10 +72,10 @@ window.addEventListener('DOMContentLoaded', () => {
   //   editScreen.classList.remove("hidden");
   // });
 
-  document.querySelector(".saved-slots-list-wrap .add-button").addEventListener('click', () => {
-    homeScreen.classList.add("hidden");
-    editScreen.classList.remove("hidden");
-  });
+  // document.querySelector(".saved-slots-list-wrap .add-button").addEventListener('click', () => {
+  //   homeScreen.classList.add("hidden");
+  //   editScreen.classList.remove("hidden");
+  // });
 
   // document.querySelector(".edit-view .back-button").addEventListener('click', () => {
   //   homeScreen.classList.remove("hidden");
