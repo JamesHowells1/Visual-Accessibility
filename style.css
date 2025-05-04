@@ -6,9 +6,11 @@
   /* body and title fonts */
   --body: 'Hind', 'Inter', 'Helvetica Neue', 'Helvetica', sans-serif;
   --title: 'Montserrat', 'Inter', 'Helvetica Neue', 'Helvetica', sans-serif;
+
+  /* font size */
+  --body-font-size: 16px;
   
   /* primary colours */
-  --true-white: #fff;
   --off-white-a: #F2F4FB;
   --off-black: #121A45;
   --cody-blue: #7582CB;
@@ -31,17 +33,18 @@
 
 body {
   background-color: var(--current-overlay-colour); 
+  overflow-y: hidden;
 }
 
 /*changes highlight colour*/
 ::selection {
   background: var(--cody-blue); /* WebKit/Blink Browsers */
-  color: var(--true-white);
+  color: var(--off-white-a);
 }
 
 ::-moz-selection {
   background: var(--cody-blue); /* Gecko Browsers */
-  color: var(--true-white);
+  color: var(--off-white-a);
 }
 
 /* set default font styling for text elements */
@@ -49,7 +52,7 @@ h1, h2, h3, h4, h5, h6, p, li, a, input, label, textarea, select, option, button
   font-family: var(--body);
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: var(--body-font-size);
   color: var(--off-white-a);
 }
 
@@ -89,7 +92,7 @@ h5 {
 }
 
 h6 {
-  font-size: 16px;
+  font-size: var(--body-font-size);
 }
 
 p strong {
@@ -182,7 +185,7 @@ input {
 
 input::placeholder {
   color: var(--grey-c);
-  font-size: 16px;
+  font-size: var(--body-font-size);
   font-family: var(--body);
   font-weight: 400;
 }
@@ -270,16 +273,24 @@ input::-webkit-search-cancel-button{
   right: 10px;
 }
 
-.view-ui-button {
+.view-ui-button, .close-app-button {
   border-radius: 10px;
   width: 35px;
   height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.view-ui-button .icon {
+.view-ui-button .icon, .close-app-button .icon {
   width: 100%;
   height: 100%;
   border-radius: inherit;
+}
+
+.close-app-button .icon {
+  width: 32px;
+  height: 32px;
 }
 
 
@@ -297,7 +308,7 @@ input::-webkit-search-cancel-button{
   background-color: var(--cody-blue);
   border-radius: 10px;
   color: var(--off-white-a);
-  width: 220px;
+  width: 321px;
 }
 
 .menu .icon {
@@ -331,7 +342,7 @@ input::-webkit-search-cancel-button{
 }
 
 .menu .saved-slots .top .title {
-  font-size: 16px;
+  font-size: var(--body-font-size);
 }
 
 .menu .saved-slots-list-wrap .saved-slots-list {
@@ -387,13 +398,28 @@ input::-webkit-search-cancel-button{
 /* SETTINGS SCREEN */
 /* ================ */
 
+.settings {
+  width: 321px;
+}
+
 .settings .menu-heading {
   margin-bottom: 10px;
 }
 
 .settings .menu-heading .main-title {
-  text-align: center;
+  text-align: right;
   width: 100%;
+  font-size: var(--body-font-size);
+  font-weight: 600;
+}
+
+.settings .menu-heading .back-button {
+  display: flex;
+}
+
+.settings .main-content {
+  overflow-y: scroll;
+  max-height: 539px;
 }
 
 .menu .icon {
@@ -401,7 +427,69 @@ input::-webkit-search-cancel-button{
 }
 
 .settings .standard-button:not(:last-child) {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+}
+
+.settings .standard-button {
+  display: flex;
+  align-items: center;
+}
+
+.settings .standard-button .external-link-icon {
+  fill: var(--cody-blue) !important;
+  margin-left: 4px;
+  width: 20px;
+  height: 20px;
+  padding-bottom: 2px;
+}
+
+.settings .expanded-settings {
+  background-color: var(--off-white-a);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.settings .expanded-settings p:not(.grey-text) {
+  color: var(--cody-blue);
+}
+
+.settings h2 {
+  font-size: var(--body-font-size);
+  font-weight: 600;
+  color: var(--off-black);
+  padding-bottom: 4px;
+  text-align: center;
+}
+
+.settings .description {
+  margin-top: 2px;
+  margin-bottom: 6px;
+}
+
+.settings .picker-wrap:not(.picker-wrap-c) {
+  margin-bottom: 5px;
+}
+
+.settings .selector-wrap {
+  margin-bottom: 10px;
+}
+
+.settings .app-typography p:not(.description) {
+  margin-bottom: 3px;
+}
+
+.settings .reset-to-default-button {
+  background-color: var(--off-blue-a);
+  margin-top: 10px;
+}
+
+.settings select {
+  padding: 2px 5px;
+  border-radius: 10px;
+  border: 1px solid var(--grey-c);
+  color: var(--off-black);
+  width: 100%;
 }
 
 
@@ -411,8 +499,7 @@ input::-webkit-search-cancel-button{
 /* ================ */
 
 .edit-view {
-  min-width: 220px;
-  width: unset;
+  width: 321px;
 }
 
 .edit-view .back-button {
@@ -424,7 +511,7 @@ input::-webkit-search-cancel-button{
 }
 
 .edit-view .menu-heading .title {
-  font-size: 16px;
+  font-size: var(--body-font-size);
   margin-left: 20px;
 }
 
@@ -443,12 +530,12 @@ input::-webkit-search-cancel-button{
   min-width: 150px;
 }
 
-.edit-view .picker-wrap {
+.picker-wrap {
   width: 100%;
   position: relative;
 }
 
-.edit-view .picker-wrap .icon {
+.picker-wrap .icon {
   position: absolute;
   right: 15px;
   top: 15px;
@@ -457,7 +544,7 @@ input::-webkit-search-cancel-button{
   height: auto;
 }
 
-.edit-view .colour-picker #picker {
+.picker-wrap .picker { /* styling for any picker */
   padding: 0;
   background-color: unset;
   color: unset;
@@ -498,7 +585,7 @@ input::-webkit-search-cancel-button{
 .edit-view .options {
   display: flex;
   flex-wrap: wrap;
-  width: 271px;
+  width: 100%;
   margin-top: 10px; 
 }
 
@@ -509,7 +596,7 @@ input::-webkit-search-cancel-button{
 }
 
 .edit-view .options .standard-button {
-  width: 130px;
+  width: 100%;
   margin-right: 10px;
   margin-top: 10px;
 }
@@ -588,21 +675,35 @@ input::-webkit-search-cancel-button{
 
 .preview-wrap {
   width: 500px;
+  height: 400px;
   display: flex;
+  flex-direction: column;
   position: absolute;
   top: 0;
   left: 0;
   margin: 10px;
+  background-color: var(--cody-blue);
+  padding: 25px;
+  border-radius: 10px;
 }
 
   .preview-wrap.hidden {
     display: none;
   }
 
+.preview-wrap .images-wrap {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
 .preview-wrap .image {
   border-radius: 10px;
   width: 100%;
-  height: auto;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .preview-wrap .preview-overlay {
@@ -613,6 +714,30 @@ input::-webkit-search-cancel-button{
   width: 100%;
   height: 100%;
   background-color: #ff00f178;
+}
+
+.preview-wrap .controls {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.preview-wrap .controls > * {
+  border: 2px solid var(--off-white-a);
+  border-radius: 10px;
+  padding: 8px;
+  display: flex;
+  transition: all .2s;
+}
+
+  .preview-wrap .controls > *.disabled {
+    opacity: .4;
+    pointer-events: none;
+  }
+
+.preview-wrap .controls > *:hover, .preview-wrap .controls > *:active {
+  background-color: #f2f4fb1d;
 }
 
 /* magnify functionality */
