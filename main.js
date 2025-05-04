@@ -50,11 +50,7 @@ const createWindow = () => {
 
   // handle close app button press
   ipcMain.on('quit-app', (event) => {
-    if (process.platform !== 'darwin') {
-      app.quit();
-    } else {
-      win.destroy(); 
-    }
+    app.quit();
   });
 
   // enable/disable frame 
@@ -122,7 +118,7 @@ const createWindow = () => {
 
 // quit the app when "close window" button is pressed except on mac 
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') app.quit()
+  app.quit()
 })
 
 // when ready...
