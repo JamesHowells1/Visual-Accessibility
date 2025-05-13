@@ -36,7 +36,7 @@
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12 16c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.084 0 2 .916 2 2s-.916 2-2 2-2-.916-2-2 .916-2 2-2z"></path><path d="m2.845 16.136 1 1.73c.531.917 1.809 1.261 2.73.73l.529-.306A8.1 8.1 0 0 0 9 19.402V20c0 1.103.897 2 2 2h2c1.103 0 2-.897 2-2v-.598a8.132 8.132 0 0 0 1.896-1.111l.529.306c.923.53 2.198.188 2.731-.731l.999-1.729a2.001 2.001 0 0 0-.731-2.732l-.505-.292a7.718 7.718 0 0 0 0-2.224l.505-.292a2.002 2.002 0 0 0 .731-2.732l-.999-1.729c-.531-.92-1.808-1.265-2.731-.732l-.529.306A8.1 8.1 0 0 0 15 4.598V4c0-1.103-.897-2-2-2h-2c-1.103 0-2 .897-2 2v.598a8.132 8.132 0 0 0-1.896 1.111l-.529-.306c-.924-.531-2.2-.187-2.731.732l-.999 1.729a2.001 2.001 0 0 0 .731 2.732l.505.292a7.683 7.683 0 0 0 0 2.223l-.505.292a2.003 2.003 0 0 0-.731 2.733zm3.326-2.758A5.703 5.703 0 0 1 6 12c0-.462.058-.926.17-1.378a.999.999 0 0 0-.47-1.108l-1.123-.65.998-1.729 1.145.662a.997.997 0 0 0 1.188-.142 6.071 6.071 0 0 1 2.384-1.399A1 1 0 0 0 11 5.3V4h2v1.3a1 1 0 0 0 .708.956 6.083 6.083 0 0 1 2.384 1.399.999.999 0 0 0 1.188.142l1.144-.661 1 1.729-1.124.649a1 1 0 0 0-.47 1.108c.112.452.17.916.17 1.378 0 .461-.058.925-.171 1.378a1 1 0 0 0 .471 1.108l1.123.649-.998 1.729-1.145-.661a.996.996 0 0 0-1.188.142 6.071 6.071 0 0 1-2.384 1.399A1 1 0 0 0 13 18.7l.002 1.3H11v-1.3a1 1 0 0 0-.708-.956 6.083 6.083 0 0 1-2.384-1.399.992.992 0 0 0-1.188-.141l-1.144.662-1-1.729 1.124-.651a1 1 0 0 0 .471-1.108z"></path></svg>
           </button>
           <button type="button" class="close-button">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path></svg>
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 11h14v2H5z"></path></svg>          
           </button>
         </div>
       </div>
@@ -199,9 +199,8 @@
 
     <div class="preview-wrap hidden interactive">
       <div class="images-wrap">
-        <img src="media/sample-img-0.jpg" alt="" class="image" width="1920" height="1273">
-        <img src="media/sample-img-0.jpg" alt="" class="image hidden" width="1920" height="1273">
-        <img src="media/sample-img-0.jpg" alt="" class="image hidden" width="1920" height="1273">
+        <img src="media/prev-img-1.jpg" alt="" class="image" width="3676" height="2260">
+        <img src="media/prev-img-2.jpg" alt="" class="image hidden" width="3676" height="2265">
         <div class="preview-overlay"></div>
       </div>
       <div class="controls">
@@ -287,7 +286,7 @@
       // ===========
 
       let currentOverlayOpacityValue = 0.23; // opacity for current overlay
-      let currentOverlayColour = "#c0ffee"; // colour of current overlay
+      let currentOverlayColour = "#99cd32"; // colour of current overlay
       // slots, including initial sample slots. Add slots to this array for them to be added to the main menu programmatically. 
       let slots = [
         // {
@@ -349,13 +348,10 @@
         // change preview overlay when color or opacity changes
         editScreenPicker.addEventListener('input', () => {
           document.querySelector(".preview-wrap .preview-overlay").style.backgroundColor = editScreenPicker.value;
-          document.documentElement.style.setProperty('--current-overlay-colour', "rgba("+hexToRgba(editScreenPicker.value)+ ",var(--current-overlay-opacity)"+")");
         });
 
         opacityInput.addEventListener('input', () => {
           document.querySelector(".preview-wrap .preview-overlay").style.opacity = opacityInput.value;
-          document.documentElement.style.setProperty('--current-overlay-opacity', opacityInput.value);
-          console.log(opacityInput.value)
         });
 
         // set app colours 
@@ -368,25 +364,6 @@
         appTertiaryColorPicker.addEventListener('input', () => {
           document.documentElement.style.setProperty('--off-blue-a', appTertiaryColorPicker.value);
         });
-
-        function hexToRgba(hex, alpha = 1) { //adapted for gpt
-          // Remove leading #
-          hex = hex.replace(/^#/, '');
-
-          // Convert 3-digit hex to 6-digit
-          if (hex.length === 3) {
-            hex = hex.split('').map(char => char + char).join('');
-          }
-
-          // Parse r, g, b
-          const bigint = parseInt(hex, 16);
-          const r = (bigint >> 16) & 255;
-          const g = (bigint >> 8) & 255;
-          const b = bigint & 255;
-
-          return `${r}, ${g}, ${b}`;
-        }
-
 
         // set typography
         function setTypeface(newValue) {
@@ -416,6 +393,58 @@
 
         // todo: save/get slots from local storage when editing a slot
 
+    
+      });
+
+      function hexToRgba(hex, alpha = 1) { // this function was adapted from code obtained from ChatGPT
+        // Remove leading #
+        hex = hex.replace(/^#/, '');
+
+        // Convert 3-digit hex to 6-digit
+        if (hex.length === 3) {
+          hex = hex.split('').map(char => char + char).join('');
+        }
+
+        // Parse r, g, b
+        const bigint = parseInt(hex, 16);
+        const r = (bigint >> 16) & 255;
+        const g = (bigint >> 8) & 255;
+        const b = bigint & 255;
+
+        return `${r}, ${g}, ${b}`;
+      }
+
+      function addSlots(){ 
+        // add slots to ui
+        const slot = {
+          name: "Enter slot name (" + (slots.length + 1) + ")",
+          colour: "#99cd32",
+          opacity: 0.23,
+          selected: "unselected"
+        };
+        slots.push(slot)
+        document.querySelector(".saved-slots-list").innerHTML = ``; //clear current list
+        for (let i = slots.length - 1; i >= 0; i--) {
+          const slot = slots[i];
+          const listItem = document.createElement("div");
+          listItem.classList.add("list-item");
+          listItem.classList.add(`${slot.selected}`);
+          listItem.innerHTML = `
+          <div class="text-check-wrap">
+            <button type="button" class="checkmark-button" onclick="changeOverlay(${i})">
+              <svg class="icon empty-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 12c0 3.859 3.14 7 7 7 3.859 0 7-3.141 7-7s-3.141-7-7-7c-3.86 0-7 3.141-7 7zm12 0c0 2.757-2.243 5-5 5s-5-2.243-5-5 2.243-5 5-5 5 2.243 5 5z"></path></svg>            
+              <svg class="icon filled-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12 5c-3.859 0-7 3.141-7 7s3.141 7 7 7 7-3.141 7-7-3.141-7-7-7zm0 12c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path><path d="M12 9c-1.627 0-3 1.373-3 3s1.373 3 3 3 3-1.373 3-3-1.373-3-3-3z"></path></svg>
+            </button>
+            <p class="text"><span class="number">${i + 1}</span><span class="slotName name" contenteditable="true">${slot.name}</span></p>
+          </div>
+          <button type="button" class="edit-button" onclick="editSlot(${i})">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path><path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path></svg>
+          </button>
+          `;
+          document.querySelector(".saved-slots-list").prepend(listItem);
+        }
+
+        // add event listeners to slot names
         document.querySelectorAll('.slotName').forEach((name, index) => {
           name.addEventListener('blur', () => {
             const newName = name.textContent.trim();
@@ -426,38 +455,31 @@
             }
           });
         });
-    
-      });
 
-      function addSlots(){ 
-          // add slots to ui
-              const slot = slots;
-              slot.colour = "#c0ffee";
-              slot.opacity = 0.23;
-              slot.name = "Enter Slot Name";
-              slots.push(slot)
-          for (let i = slots.length - 1; i >= 0; i--) {
-            if(slots[i].name = undefined){
-
-            }
-            const listItem = document.createElement("div");
-            listItem.classList.add("list-item");
-            listItem.innerHTML = `
-            <button type="button" onclick="changeOverlay(${i})">
-              <p class="text"><span class="number">${i + 1}</span><span class="slotName" contenteditable="true">${slot.name}</span></p>
-            </button>
-            <button type="button" class="edit-button" onclick="editSlot(${i})">
-              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path><path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path></svg>
-            </button>
-            `;
-            document.querySelector(".saved-slots-list").prepend(listItem);
-          }
+        // focus and select on last created slot 
+        const itemToSelect = document.querySelectorAll('.slotName')[document.querySelectorAll('.slotName').length - 1];
+        itemToSelect.focus();
+        // the following code to select text was obtained from chatGPT
+        const range = document.createRange();
+        range.selectNodeContents(itemToSelect);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
       }
 
-      function changeOverlay(slotIndex){
+      function changeOverlay(slotIndex) {
         // if (slots[slotIndex] == undefined) return;
         const slot = slots[slotIndex];
         document.documentElement.style.setProperty('--current-overlay-colour', "rgba("+hexToRgba(slot.colour)+ ","+slot.opacity+")");
+        document.querySelectorAll('.list-item').forEach((item)=>{
+          item.classList.remove("selected");
+        });
+        document.querySelectorAll('.list-item')[slotIndex].classList.add("selected");
+        document.querySelectorAll('.list-item')[slotIndex].classList.remove("unselected");
+        slots.forEach((item)=>{
+          item.selected = "unselected";
+        });
+        slots[slotIndex].selected = "selected";
       }
 
       // reset app colours to default 
@@ -567,13 +589,13 @@
       function cancelSlotEdit() {
         homeScreen.classList.remove("hidden");
         editScreen.classList.add("hidden");
-        resetOverlayColor();
+        // resetOverlayColor();
         if (previewOpen) showHidePreviewWrap(); // close preview if open
       }
       
-      function resetOverlayColor(){
-        document.documentElement.style.setProperty('--current-overlay-colour', rgba(153, 205, 50, 0.23));
-      }
+      // function resetOverlayColor(){
+      //   document.documentElement.style.setProperty('--current-overlay-colour', rgba(153, 205, 50, 0.23));
+      // }
 
       // when the user clicks "Save Slot X"
       function saveSlot(slotIndex) {
@@ -583,8 +605,11 @@
         slot.colour = document.querySelector("#picker").value;
         slot.opacity = document.querySelector("#opacity").value;
 
+        // update overlay if current slot being edited is the currently enabled slot
+        if (slot.selected = "selected") changeOverlay(slotIndex);
+
         // TODO: save slots to local storage
-        slots.push(slot)
+        //slots.push(slot)
 
         // go back to main menu
         cancelSlotEdit();
@@ -601,6 +626,7 @@
         currentPreviewImageInFocus--;
         if (currentPreviewImageInFocus == 1) {
           backButton.classList.add("disabled");
+          forwardButton.classList.remove("disabled");
         } else {
           backButton.classList.remove("disabled");
           forwardButton.classList.remove("disabled");
@@ -611,8 +637,9 @@
         previewImages[currentPreviewImageInFocus].classList.remove("hidden");
         previewImages[currentPreviewImageInFocus - 1].classList.add("hidden");
         currentPreviewImageInFocus++;
-        if (currentPreviewImageInFocus == 3) {
+        if (currentPreviewImageInFocus == 2) {
           forwardButton.classList.add("disabled");
+          backButton.classList.remove("disabled");
         } else {
           forwardButton.classList.remove("disabled");
           backButton.classList.remove("disabled");

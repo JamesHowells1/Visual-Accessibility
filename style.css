@@ -17,12 +17,12 @@
 
   /* secondary colours */
   --off-blue-a: #E0E4F7;
+  --off-blue-b: #919cd8; /* used for secondary buttons on blue backgrounds */
   --grey-c: #C4C6D5;
   --grey-d: #51535d;
 
   /* current overlay colour */
-  --current-overlay-opacity: 0.23;
-  --current-overlay-colour: rgba(153, 205, 50, var(--current-overlay-opacity)); 
+  --current-overlay-colour: rgba(153, 205, 50, 0); 
 }
 
 * {
@@ -39,12 +39,12 @@ body {
 
 /*changes highlight colour*/
 ::selection {
-  background: var(--cody-blue); /* WebKit/Blink Browsers */
+  background: var(--off-black); /* WebKit/Blink Browsers */
   color: var(--off-white-a);
 }
 
 ::-moz-selection {
-  background: var(--cody-blue); /* Gecko Browsers */
+  background: var(--off-black); /* Gecko Browsers */
   color: var(--off-white-a);
 }
 
@@ -328,8 +328,20 @@ input::-webkit-search-cancel-button{
   align-items: center;
 }
 
-.menu .menu-heading .buttons-wrap :first-child {
-  margin-right: 5px;
+.menu .menu-heading .buttons-wrap button:first-child {
+  margin-right: 8px;
+}
+
+.menu .menu-heading .buttons-wrap button {
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu .menu-heading .buttons-wrap button .icon {
+  width: 22px;
+  height: 22px;
 }
 
 .menu .menu-heading .main-title {
@@ -346,20 +358,79 @@ input::-webkit-search-cancel-button{
   font-size: var(--body-font-size);
 }
 
+.menu .saved-slots .top .new-preset-button {
+  display: flex;
+  padding: 4px;
+  align-items: center;
+  justify-self: center;
+}
+
+.menu .saved-slots .top .new-preset-button .icon {
+  width: 22px;
+  height: 22px;
+}
+
 .menu .saved-slots-list-wrap .saved-slots-list {
   margin-top: 10px;
-  max-height: 112px;
+  max-height: 250px;
   overflow-y: scroll;
 }
 
 .menu .saved-slots-list-wrap .saved-slots-list .list-item {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
 }
 
 .menu .saved-slots-list-wrap .list-item .number {
+  margin-right: 10px;
+}
+
+.menu .saved-slots-list-wrap .list-item .name:active, .menu .saved-slots-list-wrap .list-item .name:focus-visible {
+  outline: none;
+  border-bottom: 1px solid var(--off-white-a);
+}
+
+.menu .saved-slots-list-wrap .list-item .text-check-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.menu .saved-slots-list-wrap .list-item .checkmark-button {
+  padding: 4px;
+  display: flex;
+  opacity: 0.5;
+  transition: opacity .2s;
   margin-right: 5px;
 }
+
+.menu .saved-slots-list-wrap .list-item .checkmark-button .icon {
+  width: 22px;
+  height: 22px;
+  transition: opacity .2s;
+  display: flex;
+}
+
+  .menu .saved-slots-list-wrap .list-item .checkmark-button:hover, .menu .saved-slots-list-wrap .list-item .checkmark-button:focus-visible {
+    opacity: 1;
+  }
+
+  .menu .saved-slots-list-wrap .list-item.selected .checkmark-button {
+    opacity: 1;
+  }
+
+  .menu .saved-slots-list-wrap .list-item .checkmark-button .icon.filled-circle {
+    display: none;
+  }
+
+  .menu .saved-slots-list-wrap .list-item.selected .checkmark-button .icon.filled-circle {
+    display: flex;
+  }
+
+  .menu .saved-slots-list-wrap .list-item.selected .checkmark-button .icon.empty-circle {
+    display: none;
+  }
 
 .menu .saved-slots-list-wrap .add-button {
   padding: 10px 5px;
@@ -367,14 +438,22 @@ input::-webkit-search-cancel-button{
   width: 100%;
 }
 
+.menu .saved-slots-list .edit-button {
+  display: flex;
+  padding: 4px;
+}
+
 .menu .magnify-wrap {
   display: flex;
   align-items: center;
   width: 100%;
+  margin-top: 10px;
 }
 
 .menu .magnify-wrap .magnify-text-button {
   transition: all .2s;
+  background-color: var(--off-blue-b);
+  color: var(--off-white-a);
 }
 
 .menu .magnify-wrap .magnify-text-button.active {
@@ -385,7 +464,7 @@ input::-webkit-search-cancel-button{
 
 .menu .magnify-wrap .icon {
   margin-left: 6px;
-  fill: var(--cody-blue) !important;
+  fill: var(--off-white-a) !important;
   transition: fill .2s;
 }
 
@@ -677,7 +756,7 @@ input::-webkit-search-cancel-button{
 
 .preview-wrap {
   width: 500px;
-  height: 400px;
+  height: 379px;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -823,6 +902,10 @@ canvas {
   margin-bottom: 10px;
   width: 300px;
   text-align: center;
+}
+
+.intro-overlay select option {
+  color: var(--off-black);
 }
 
 .intro-overlay .slide h1, .intro-overlay .slide p {
