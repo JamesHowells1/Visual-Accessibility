@@ -573,6 +573,10 @@ input::-webkit-search-cancel-button{
   width: 100%;
 }
 
+.settings select option {
+  color: var(--off-black);
+}
+
 
 
 /* ================ */
