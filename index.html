@@ -43,14 +43,14 @@
       <div class="saved-slots">
         <div class="top">
           <h2 class="title">Saved Slots</h2>
-          <button type="button">
+          <button type="button" class="new-preset-button" onclick="addSlots()">
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg>         
           </button>
         </div>
         <div class="saved-slots-list-wrap">
           <div class="saved-slots-list">
             <!-- saved slots are added programmatically - see js below -->
-            <button type="button" class="add-button standard-button">Add New Preset <box-icon name='plus' class="icon"></box-icon></button>
+            <!-- <button type="button" class="add-button standard-button">Add New Preset <box-icon name='plus' class="icon"></box-icon></button> -->
           </div>
         </div>
       </div>
@@ -187,7 +187,7 @@
         </div>
         <div class="options">
           <div class="row-1 row">
-            <button type="button" class="standard-button save-button">Save Slot 1</button>
+            <button type="button" class="standard-button save-button" onclick="saveSlot()">Save Slot 1</button>
           </div>
           <div class="row-2 row">
             <button type="button" class="standard-button preview-button" onclick="showHidePreviewWrap()">Preview</button>
@@ -287,22 +287,30 @@
       // ===========
 
       let currentOverlayOpacityValue = 0.23; // opacity for current overlay
-      let currentOverlayColour = "#99cd32"; // colour of current overlay
+      let currentOverlayColour = "#c0ffee"; // colour of current overlay
       // slots, including initial sample slots. Add slots to this array for them to be added to the main menu programmatically. 
       let slots = [
-        {
-          name: "Sample slot A",
-          colour: "#99cd32",
-          opacity: 0.23
-        },
-        {
-          name: "Sample slot B",
-          colour: "#FFFFEE",
-          opacity: 0.15
-        }
+        // {
+        //   name: "Sample slot A",
+        //   colour: "#99cd32",
+        //   opacity: 0.23
+        // },
+        // {
+        //   name: "Sample slot B",
+        //   colour: "#FFFFEE",
+        //   opacity: 0.15
+        // }
       ]
 
+      //open edit screen when new preset button pressed - call editSlot function
+      //save colour settings when save is pressed - saveSlot function
+      //add new slot to slots array - add slot function
+      //save new slots array to local storage - saveSlot function
 
+      // editable slot name - html keyword edittable/something similar. js event listener for name tags, put in function to be called later. in listener changeevent update js object. 
+      // open edit screen might be reverse order 
+      // put list display thing in fubction
+      // click plus create blank element and call add item function then edit ta-da
 
       // ============
       // FOR THE EDIT AND SETTINGS SCREENS
@@ -341,15 +349,18 @@
         // change preview overlay when color or opacity changes
         editScreenPicker.addEventListener('input', () => {
           document.querySelector(".preview-wrap .preview-overlay").style.backgroundColor = editScreenPicker.value;
+          document.documentElement.style.setProperty('--current-overlay-colour', "rgba("+hexToRgba(editScreenPicker.value)+ ",var(--current-overlay-opacity)"+")");
         });
 
         opacityInput.addEventListener('input', () => {
           document.querySelector(".preview-wrap .preview-overlay").style.opacity = opacityInput.value;
+          document.documentElement.style.setProperty('--current-overlay-opacity', opacityInput.value);
+          console.log(opacityInput.value)
         });
 
         // set app colours 
         appPrimaryColorPicker.addEventListener('input', () => {
-          document.documentElement.style.setProperty('--cody-blue', appPrimaryColorPicker.value);
+          document.documentElement.style.setProperty('--cody-blue', appPrimaryColorPicker.value); //can use to change --current-overlay-colour
         });
         appSecondaryColorPicker.addEventListener('input', () => {
           document.documentElement.style.setProperty('--off-white-a', appSecondaryColorPicker.value);
@@ -357,6 +368,25 @@
         appTertiaryColorPicker.addEventListener('input', () => {
           document.documentElement.style.setProperty('--off-blue-a', appTertiaryColorPicker.value);
         });
+
+        function hexToRgba(hex, alpha = 1) { //adapted for gpt
+          // Remove leading #
+          hex = hex.replace(/^#/, '');
+
+          // Convert 3-digit hex to 6-digit
+          if (hex.length === 3) {
+            hex = hex.split('').map(char => char + char).join('');
+          }
+
+          // Parse r, g, b
+          const bigint = parseInt(hex, 16);
+          const r = (bigint >> 16) & 255;
+          const g = (bigint >> 8) & 255;
+          const b = bigint & 255;
+
+          return `${r}, ${g}, ${b}`;
+        }
+
 
         // set typography
         function setTypeface(newValue) {
@@ -386,21 +416,49 @@
 
         // todo: save/get slots from local storage when editing a slot
 
+        document.querySelectorAll('.slotName').forEach((name, index) => {
+          name.addEventListener('blur', () => {
+            const newName = name.textContent.trim();
 
-        // add slots to ui
-        for (let i = slots.length - 1; i >= 0; i--) {
-          const slot = slots[i];
-          const listItem = document.createElement("div");
-          listItem.classList.add("list-item");
-          listItem.innerHTML = `
-          <p class="text"><span class="number">${i + 1}</span><span class="name">${slot.name}</span></p>
-          <button type="button" class="edit-button" onclick="editSlot(${i})">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path><path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path></svg>
-          </button>
-          `;
-          document.querySelector(".saved-slots-list").prepend(listItem);
-        }
+            // Update the person at the same index
+            if (slots[index]) {
+              slots[index].name = newName;
+            }
+          });
+        });
+    
       });
+
+      function addSlots(){ 
+          // add slots to ui
+              const slot = slots;
+              slot.colour = "#c0ffee";
+              slot.opacity = 0.23;
+              slot.name = "Enter Slot Name";
+              slots.push(slot)
+          for (let i = slots.length - 1; i >= 0; i--) {
+            if(slots[i].name = undefined){
+
+            }
+            const listItem = document.createElement("div");
+            listItem.classList.add("list-item");
+            listItem.innerHTML = `
+            <button type="button" onclick="changeOverlay(${i})">
+              <p class="text"><span class="number">${i + 1}</span><span class="slotName" contenteditable="true">${slot.name}</span></p>
+            </button>
+            <button type="button" class="edit-button" onclick="editSlot(${i})">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path><path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path></svg>
+            </button>
+            `;
+            document.querySelector(".saved-slots-list").prepend(listItem);
+          }
+      }
+
+      function changeOverlay(slotIndex){
+        // if (slots[slotIndex] == undefined) return;
+        const slot = slots[slotIndex];
+        document.documentElement.style.setProperty('--current-overlay-colour', "rgba("+hexToRgba(slot.colour)+ ","+slot.opacity+")");
+      }
 
       // reset app colours to default 
       function resetAppColoursToDefault() {
@@ -509,7 +567,12 @@
       function cancelSlotEdit() {
         homeScreen.classList.remove("hidden");
         editScreen.classList.add("hidden");
+        resetOverlayColor();
         if (previewOpen) showHidePreviewWrap(); // close preview if open
+      }
+      
+      function resetOverlayColor(){
+        document.documentElement.style.setProperty('--current-overlay-colour', rgba(153, 205, 50, 0.23));
       }
 
       // when the user clicks "Save Slot X"
@@ -521,6 +584,7 @@
         slot.opacity = document.querySelector("#opacity").value;
 
         // TODO: save slots to local storage
+        slots.push(slot)
 
         // go back to main menu
         cancelSlotEdit();

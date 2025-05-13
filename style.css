@@ -21,7 +21,8 @@
   --grey-d: #51535d;
 
   /* current overlay colour */
-  --current-overlay-colour: rgba(153, 205, 50, 0.23); 
+  --current-overlay-opacity: 0.23;
+  --current-overlay-colour: rgba(153, 205, 50, var(--current-overlay-opacity)); 
 }
 
 * {
